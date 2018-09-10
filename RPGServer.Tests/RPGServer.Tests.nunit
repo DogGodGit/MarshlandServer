@@ -1,0 +1,6 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Default" />
+  <Config name="Default" configfile="App.config" binpathtype="Auto">
+    <assembly path="bin\Release\RPGServer.Tests.dll" />
+  </Config>
+</NUnitProject>

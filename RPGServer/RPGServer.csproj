@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{76840144-812A-43B4-9278-A2CCF44E0037}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MainServer</RootNamespace>
+    <AssemblyName>RPGServer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>allRpg.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.7.4\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NamedPipeWrapper, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NamedPipeWrapper.1.4.0\lib\net40\NamedPipeWrapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ServerControlMessage">
+      <HintPath>..\packages\ServerControlMessage\ServerControlMessage.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="abilities.cs" />
+    <Compile Include="AbilityVariables.cs" />
+    <Compile Include="Achievements.cs" />
+    <Compile Include="AggroData.cs" />
+    <Compile Include="Analytics\AnalyticsMain.cs" />
+    <Compile Include="Analytics\Engagment\NotificationServices.cs" />
+    <Compile Include="Analytics\Gameplay\auctionHouseEvent.cs" />
+    <Compile Include="Analytics\Gameplay\CraftingEvent.cs" />
+    <Compile Include="Analytics\Gameplay\EmoteUsed.cs" />
+    <Compile Include="Analytics\Gameplay\fastTravel.cs" />
+    <Compile Include="Analytics\Gameplay\GameHelp.cs" />
+    <Compile Include="Analytics\Gameplay\interactedWithNPC.cs" />
+    <Compile Include="Analytics\Gameplay\itemActioned.cs" />
+    <Compile Include="Analytics\Gameplay\missionCompleted.cs" />
+    <Compile Include="Analytics\Gameplay\missionStarted.cs" />
+    <Compile Include="Analytics\Gameplay\opponentDefeated.cs" />
+    <Compile Include="Analytics\Gameplay\options.cs" />
+    <Compile Include="Analytics\Gameplay\playerDefeated.cs" />
+    <Compile Include="Analytics\Gameplay\skillUpgraded.cs" />
+    <Compile Include="Analytics\Gameplay\skillUsed.cs" />
+    <Compile Include="Analytics\Gameplay\statUpgraded.cs" />
+    <Compile Include="Analytics\Gameplay\supportLog.cs" />
+    <Compile Include="Analytics\Gameplay\zoneLog.cs" />
+    <Compile Include="Analytics\GoalCounts.cs" />
+    <Compile Include="Analytics\JsonString.cs" />
+    <Compile Include="Analytics\Monetisation\achievementLog.cs" />
+    <Compile Include="Analytics\Monetisation\BountyTracking.cs" />
+    <Compile Include="Analytics\Monetisation\levelUp.cs" />
+    <Compile Include="Analytics\Monetisation\productViewed.cs" />
+    <Compile Include="Analytics\Monetisation\shopEntered.cs" />
+    <Compile Include="Analytics\Monetisation\transaction.cs" />
+    <Compile Include="Analytics\sharedObjects.cs" />
+    <Compile Include="Analytics\Simple\characterCreatedEvent.cs" />
+    <Compile Include="Analytics\Simple\clientDevice.cs" />
+    <Compile Include="Analytics\Simple\gameEndedEvent.cs" />
+    <Compile Include="Analytics\Simple\gameStartedEvent.cs" />
+    <Compile Include="Analytics\Simple\newPlayerEvent.cs" />
+    <Compile Include="Analytics\Social\guild.cs" />
+    <Compile Include="Analytics\Social\inviteReceived.cs" />
+    <Compile Include="Analytics\Social\inviteSent.cs" />
+    <Compile Include="Analytics\Social\messageReceived.cs" />
+    <Compile Include="Analytics\Social\messageSent.cs" />
+    <Compile Include="Analytics\Social\playerInfo.cs" />
+    <Compile Include="Analytics\Social\pvpEnded.cs" />
+    <Compile Include="Analytics\Social\pvpStarted.cs" />
+    <Compile Include="Analytics\Social\social.cs" />
+    <Compile Include="astar\ASMap.cs" />
+    <Compile Include="astar\ASNode.cs" />
+    <Compile Include="astar\ASPartition.cs" />
+    <Compile Include="astar\ASPathFinder.cs" />
+    <Compile Include="astar\ASPathingEntity.cs" />
+    <Compile Include="astar\ASTriangle .cs" />
+    <Compile Include="AuctionHouse\AuctionHouse.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseBids.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseDatabase.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseEnums.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseFiltering.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseListing.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseMail.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseParams.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseRequests.cs" />
+    <Compile Include="AuctionHouse\AuctionHouseTasks.cs" />
+    <Compile Include="BackgroundTasks.cs" />
+    <Compile Include="Barbershop\BarbershopNetworkManager.cs" />
+    <Compile Include="Barbershop\BarberShopUsed.cs" />
+    <Compile Include="character.cs" />
+    <Compile Include="CharacterBountyManager.cs" />
+    <Compile Include="CharacterEffectManager.cs" />
+    <Compile Include="CharacterPath.cs" />
+    <Compile Include="CharacterSlotSet.cs" />
+    <Compile Include="character_classes\Mailbox.cs" />
+    <Compile Include="character_classes\PlayerMail.cs" />
+    <Compile Include="character_classes\TargetOwner.cs" />
+    <Compile Include="character_classes\XML_Popup.cs" />
+    <Compile Include="Clan.cs" />
+    <Compile Include="ClassTemplateManager.cs" />
+    <Compile Include="Collisions\CollisionObjectBases.cs" />
+    <Compile Include="Collisions\CollisionObjects.cs" />
+    <Compile Include="Collisions\Collisions.cs" />
+    <Compile Include="Collisions\QuadTree.cs" />
+    <Compile Include="CombatAI\CombatAI.cs" />
+    <Compile Include="CombatAI\CombatAITemplate.cs" />
+    <Compile Include="CombatAI\CombatAIScripts.cs" />
+    <Compile Include="CombatAI\MobSkillSet.cs" />
+    <Compile Include="CombatAI\SkillSetTemplate.cs" />
+    <Compile Include="CombatAlgorithms\EvasionFactorDatabase.cs" />
+    <Compile Include="CombatAlgorithms\EvasionFactorManager.cs" />
+    <Compile Include="CombatAlgorithms\MeleeDamageFluctuationDatabase.cs" />
+    <Compile Include="CombatAlgorithms\MeleeDamageFluctuationManager.cs" />
+    <Compile Include="CombatAlgorithms\SkillDamageFluctuationDatabase.cs" />
+    <Compile Include="CombatAlgorithms\SkillDamageFluctuationManager.cs" />
+    <Compile Include="CombatEntity.cs" />
+    <Compile Include="CombatEntityStats.cs" />
+    <Compile Include="Combat\AOETarget.cs" />
+    <Compile Include="Combat\CalculatedDamage.cs" />
+    <Compile Include="Combat\CombatDamageMessageData.cs" />
+    <Compile Include="Combat\CombatManager.cs" />
+    <Compile Include="Combat\SkillDamageData.cs" />
+    <Compile Include="CommandProcessor.cs" />
+    <Compile Include="CommandProcessorLoading.cs" />
+    <Compile Include="Competitions\Competition.cs" />
+    <Compile Include="Competitions\CompetitionManager.cs" />
+    <Compile Include="Competitions\CompetitionTimer.cs" />
+    <Compile Include="ConfigurationVerifier.cs" />
+    <Compile Include="Combat\DamageCalculator.cs" />
+    <Compile Include="Crafting\CraftingManager.cs" />
+    <Compile Include="Crafting\CraftingTemplate.cs" />
+    <Compile Include="Crafting\CraftingTemplateManager.cs" />
+    <Compile Include="Crafting\CraftingNetworkHandler.cs" />
+    <Compile Include="DailyLoginReward\DailyRewardManager.cs" />
+    <Compile Include="DailyLoginReward\DailyRewardNetworkManager.cs" />
+    <Compile Include="DailyLoginReward\DailyRewardTemplate.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="DataValidator.cs" />
+    <Compile Include="DoubleBufferPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DuelTarget.cs" />
+    <Compile Include="EntitySkill.cs" />
+    <Compile Include="ExploitVerifier.cs" />
+    <Compile Include="Factions\Faction.cs" />
+    <Compile Include="Factions\FactionEntity.cs" />
+    <Compile Include="Factions\FactionManager.cs" />
+    <Compile Include="Factions\FactionNetworkManager.cs" />
+    <Compile Include="Factions\FactionTemplate.cs" />
+    <Compile Include="Factions\FactionTemplateManager.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FriendTemplate.cs" />
+    <Compile Include="IEntitySocialStanding.cs" />
+    <Compile Include="inventory.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemShop.cs" />
+    <Compile Include="Items\ItemSpawnPoint.cs" />
+    <Compile Include="Items\EquipmentSets.cs" />
+    <Compile Include="Items\ItemCooldown.cs" />
+    <Compile Include="Items\ItemTemplateManager.cs" />
+    <Compile Include="KickConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KickConfirm.Designer.cs" />
+    <Compile Include="ListViewXP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Localise\Localiser.cs" />
+    <Compile Include="Localise\LocalisedTextDBLoader.cs" />
+    <Compile Include="LogOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogOptionsForm.Designer.cs" />
+    <Compile Include="LootSet.cs" />
+    <Compile Include="LootSetManager.cs" />
+    <Compile Include="MobSets.cs" />
+    <Compile Include="MobSkillTable.cs" />
+    <Compile Include="MonsterTemplateManager.cs" />
+    <Compile Include="NamedPipeController\ServerControlledClient.cs" />
+    <Compile Include="NamedPipeController\ServerControlledClientDatabase.cs" />
+    <Compile Include="NamedPipeController\ServerControlledClientManager.cs" />
+    <Compile Include="NamedPipeController\ShutdownMessageManager.cs" />
+    <Compile Include="partitioning\EffectArea.cs" />
+    <Compile Include="partitioning\ZonePartition.cs" />
+    <Compile Include="Party.cs" />
+    <Compile Include="PendingRequest.cs" />
+    <Compile Include="PermanentBuff.cs" />
+    <Compile Include="PlatinumRewards.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerDisconnecter.cs" />
+    <Compile Include="PlayerSpawnPoint.cs" />
+    <Compile Include="player_offers\CharacterSpecialOfferManager.cs" />
+    <Compile Include="player_offers\FyberOffers.cs" />
+    <Compile Include="player_offers\SpecialOfferContainer.cs" />
+    <Compile Include="player_offers\SpecialOfferTemplate.cs" />
+    <Compile Include="player_offers\TargetedSpecialOfferManager.cs" />
+    <Compile Include="player_offers\Trialpay.cs" />
+    <Compile Include="player_offers\W3iOffers.cs" />
+    <Compile Include="ProfanityFilter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="quadtree.cs" />
+    <Compile Include="Quests\Quest.cs" />
+    <Compile Include="Quests\QuestManager.cs" />
+    <Compile Include="Quests\QuestStage.cs" />
+    <Compile Include="Quests\QuestStageTemplate.cs" />
+    <Compile Include="Quests\QuestStub.cs" />
+    <Compile Include="Quests\QuestTemplate.cs" />
+    <Compile Include="Quests\QuestTemplateManager.cs" />
+    <Compile Include="RaceTemplateManager.cs" />
+    <Compile Include="Rankings.cs" />
+    <Compile Include="RelocateConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelocateConfirm.Designer.cs" />
+    <Compile Include="ServerBountyManager.cs" />
+    <Compile Include="ServerControlledEntity.cs" />
+    <Compile Include="Shop\Shop.cs" />
+    <Compile Include="Shop\ShopItem.cs" />
+    <Compile Include="Shop\ShopSubtypeMultipliers.cs" />
+    <Compile Include="Signposting\PlayerSignpostManager.cs" />
+    <Compile Include="Signposting\Signpost.cs" />
+    <Compile Include="Signposting\SignpostAction.cs" />
+    <Compile Include="Signposting\SignpostCondition.cs" />
+    <Compile Include="Signposting\SignpostTask.cs" />
+    <Compile Include="SkillTemplate.cs" />
+    <Compile Include="SkillTemplateManager.cs" />
+    <Compile Include="SMTPHandler.cs" />
+    <Compile Include="SpawnPoint.cs" />
+    <Compile Include="StatusEffect.cs" />
+    <Compile Include="StatusEffectTemplate.cs" />
+    <Compile Include="StatusEffectTemplateManager.cs" />
+    <Compile Include="StatusSkill.cs" />
+    <Compile Include="player_offers\SuperSonicOffers.cs" />
+    <Compile Include="Support\SupportActionReader.cs" />
+    <Compile Include="SystemMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemMessageForm.Designer.cs" />
+    <Compile Include="TokenResponse.cs" />
+    <Compile Include="TokenVendors\TokenVendor.cs" />
+    <Compile Include="TokenVendors\TokenVendorCost.cs" />
+    <Compile Include="TokenVendors\TokenVendorDatabase.cs" />
+    <Compile Include="TokenVendors\TokenVendorManager.cs" />
+    <Compile Include="TokenVendors\TokenVendorNetworkManager.cs" />
+    <Compile Include="TokenVendors\TokenVendorStock.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="Zone.cs" />
+    <Compile Include="ZonePoint.cs" />
+    <Content Include="allRpg.ico" />
+    <Content Include="icons\allRpg.ico" />
+    <Content Include="icons\androidBalor.ico" />
+    <Content Include="icons\androidBeta.ico" />
+    <Content Include="icons\androidDonn.ico" />
+    <Content Include="icons\androidFingal.ico" />
+    <Content Include="icons\androidLir.ico" />
+    <Content Include="icons\androidPreProd.ico" />
+    <Content Include="icons\appleArawn.ico" />
+    <Content Include="icons\appleBelenus.ico" />
+    <Content Include="icons\appleBeta.ico" />
+    <Content Include="icons\appleCrom.ico" />
+    <Content Include="icons\appleDanu.ico" />
+    <Content Include="icons\appleEpona.ico" />
+    <Content Include="icons\appleGwydion.ico" />
+    <Content Include="icons\appleHerne.ico" />
+    <Content Include="icons\appleLugh.ico" />
+    <Content Include="icons\appleMabon.ico" />
+    <Content Include="icons\appleMorrigan.ico" />
+    <Content Include="icons\applePreProd.ico" />
+    <Content Include="icons\appleRhiannon.ico" />
+    <Content Include="icons\appleRosmerta.ico" />
+    <Content Include="icons\appleSulis.ico" />
+    <Content Include="icons\appleTaranis.ico" />
+    <Content Include="log4netconfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KickConfirm.resx" />
+    <EmbeddedResource Include="LogOptionsForm.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RelocateConfirm.resx" />
+    <EmbeddedResource Include="SystemMessageForm.resx" />
+    <None Include="Config\App.BETA_ANDROID.config" />
+    <None Include="Config\App.BETA_IOS.config" />
+    <None Include="Config\App.PROD_IOS.config" />
+    <None Include="Config\App.PROD_ANDROID.config" />
+    <None Include="Config\App.TEST.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lidgren.Network\Lidgren.Network.csproj">
+      <Project>{3e213bb9-6f88-45ad-ae4e-7d26321a9f04}</Project>
+      <Name>Lidgren.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samples\SamplesCommon\SamplesCommon.csproj">
+      <Project>{773069da-b66e-4667-adcb-0d215ad8cf3e}</Project>
+      <Name>SamplesCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XnaGeometry\XnaGeometry.csproj">
+      <Project>{a4398650-10f4-450f-8e4f-fb3f30a39683}</Project>
+      <Name>XnaGeometry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CollisionAndAIMaps\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>IF EXIST "$(TargetDir)CollisionAndAIMaps\*.*" del /q /s "$(TargetDir)CollisionAndAIMaps\*.*"
+IF NOT EXIST "$(TargetDir)CollisionAndAIMaps" mkdir "$(TargetDir)CollisionAndAIMaps"
+copy "$(ProjectDir)CollisionAndAIMaps" "$(TargetDir)CollisionAndAIMaps"
+IF EXIST "$(TargetDir)LocalisedResources\*.*" del /q /s "$(TargetDir)LocalisedResources\*.*"
+IF NOT EXIST "$(TargetDir)LocalisedResources" mkdir "$(TargetDir)LocalisedResources"
+copy "$(ProjectDir)LocalisedResources" "$(TargetDir)LocalisedResources"
+del *.pdb
+del Lidgren.Network.xml
+del NamedPipeWrapper.xml
+del Newtonsoft.Json.xml</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
