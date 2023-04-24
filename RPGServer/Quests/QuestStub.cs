@@ -12,8 +12,8 @@ namespace MainServer
         public CompletionDetails(string completionstring)
         {
             string[] completion_dets = completionstring.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            m_id=Int32.Parse(completion_dets[0]);
-            m_total=Int32.Parse(completion_dets[1]);
+            int.TryParse(completion_dets[0], out m_id);
+            int.TryParse(completion_dets[1], out m_total);
         }
         public int m_id;
         public int m_total;

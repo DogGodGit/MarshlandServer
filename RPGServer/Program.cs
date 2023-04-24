@@ -577,7 +577,7 @@ namespace MainServer
                                 }
                             case "TINY_AGGRO_RADIUS":
                                 {
-                                    if (Int32.Parse(paramName) == 1)
+                                    if (Int32.Parse(paramValue) == 1)
                                     {
                                         m_aggroRangeMultiplier = 0.01f;
                                     }
